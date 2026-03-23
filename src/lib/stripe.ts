@@ -6,7 +6,7 @@ let _stripe: Stripe | null = null;
  * Get Stripe instance lazily
  * This prevents startup errors when Stripe is not configured
  */
-function getStripe(): Stripe {
+export function getStripe(): Stripe {
     if (!_stripe) {
         const secretKey = process.env.STRIPE_SECRET_KEY;
         if (!secretKey) {
@@ -77,7 +77,8 @@ export async function createCheckoutSession({
 }
 
 /**
- * Export stripe for webhook handling (constructEvent needs the instance)
+ * Export stripe instance lazily to prevent startup errors
+ * Use stripe.get to access the Stripe instance
  */
 export const stripe = {
     get get() {

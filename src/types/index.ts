@@ -72,9 +72,5 @@ declare module "next-auth" {
     }
 }
 
-declare module "next-auth/jwt" {
-    interface JWT {
-        id?: string;
-        role?: string;
-    }
-}
+// For NextAuth v5, JWT types are handled through the session user object
+// The role is accessible directly via session.user.role without needing JWT augmentation

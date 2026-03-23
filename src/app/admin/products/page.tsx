@@ -49,7 +49,8 @@ export default async function AdminProductsPage() {
                                         </span>
                                     </td>
                                     <td className="px-4 py-3 text-right">
-                                        <form action={deleteProductAction.bind(null, product.id)} className="inline">
+                                        <form action={deleteProductAction} className="inline">
+                                            <input type="hidden" name="id" value={product.id} />
                                             <Button variant="danger" size="sm" type="submit">Delete</Button>
                                         </form>
                                     </td>

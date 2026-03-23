@@ -76,18 +76,23 @@ export async function updateProductAction(_prevState: any, formData: FormData) {
     return { success: true };
 }
 
-export async function deleteProductAction(id: string) {
+export async function deleteProductAction(formData: FormData) {
     await requireAdmin();
+
+    const id = formData.get("id") as string;
+    if (!id) {
+        return { error: "Product ID is required" };
+    }
 
     try {
         await deleteProduct(id);
+        revalidatePath("/admin/products");
+        revalidatePath("/products");
+        return { success: true };
     } catch (e: any) {
-        return { error: e.message };
+        console.error("Failed to delete product:", e);
+        return { error: e.message || "Failed to delete product" };
     }
-
-    revalidatePath("/admin/products");
-    revalidatePath("/products");
-    return { success: true };
 }
 
 export async function updateOrderStatusAction(_prevState: any, formData: FormData) {

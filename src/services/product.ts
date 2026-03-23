@@ -202,6 +202,19 @@ export async function deleteCategory(id: string) {
     return prisma.category.delete({ where: { id } });
 }
 
+export async function getRelatedProducts(categoryId: string, currentProductId: string, limit = 4) {
+    return prisma.product.findMany({
+        where: {
+            categoryId,
+            id: { not: currentProductId },
+            stock: { gt: 0 },
+        },
+        include: { category: true },
+        orderBy: { createdAt: "desc" },
+        take: limit,
+    });
+}
+
 /**
  * Generate a unique slug for categories
  */

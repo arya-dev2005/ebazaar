@@ -147,7 +147,7 @@ Contributors will be recognized in:
 ## Questions?
 
 - Open an issue for general questions
-- Email: arya.dev2005@gmail.com
+- Email: aryadas.dev@gmail.com
 
 ---
 

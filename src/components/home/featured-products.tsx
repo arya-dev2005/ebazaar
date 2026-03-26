@@ -34,13 +34,13 @@ function ProductSkeleton() {
 
 function ShimmerSkeleton() {
     return (
-        <div className="relative overflow-hidden bg-slate-800 rounded-xl border border-slate-700">
-            <div className="aspect-square" />
-            <div className="p-4 space-y-3">
-                <div className="h-3 w-16 bg-slate-700 rounded" />
-                <div className="h-4 w-full bg-slate-700 rounded" />
-                <div className="h-4 w-2/3 bg-slate-700 rounded" />
-                <div className="h-6 w-24 bg-slate-700 rounded" />
+        <div className="relative overflow-hidden rounded-2xl glass-card">
+            <div className="aspect-square bg-slate-800/50" />
+            <div className="p-5 space-y-3">
+                <div className="h-3 w-16 bg-slate-700/60 rounded" />
+                <div className="h-4 w-full bg-slate-700/60 rounded" />
+                <div className="h-4 w-2/3 bg-slate-700/60 rounded" />
+                <div className="h-6 w-24 bg-slate-700/60 rounded" />
             </div>
             {/* Shimmer effect */}
             <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-slate-600/20 to-transparent" />
@@ -204,13 +204,19 @@ export function FeaturedProducts() {
 
     return (
         <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-10">
                 <div>
-                    <h2 className="text-2xl font-bold text-white">Featured Products</h2>
-                    <p className="text-sm text-slate-400 mt-1">Handpicked for you</p>
+                    <h2 className="text-2xl font-bold">
+                        <span className="text-white">Featured </span>
+                        <span className="gradient-text">Products</span>
+                    </h2>
+                    <p className="text-sm text-slate-400 mt-2">Handpicked for you</p>
                 </div>
-                <Link href="/products" className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
-                    View All →
+                <Link href="/products" className="group inline-flex items-center gap-1 text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+                    View All
+                    <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
                 </Link>
             </div>
 

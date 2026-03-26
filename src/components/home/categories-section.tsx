@@ -35,8 +35,8 @@ function getCategoryIcon(categoryName: string): string {
 function CategorySkeleton() {
     return (
         <div className="animate-pulse">
-            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6 text-center">
-                <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-slate-800" />
+            <div className="rounded-2xl glass-card p-6 text-center">
+                <div className="mx-auto mb-4 h-14 w-14 rounded-full bg-slate-800" />
                 <div className="mx-auto h-4 w-24 rounded bg-slate-800" />
             </div>
         </div>
@@ -86,9 +86,12 @@ export function CategoriesSection() {
 
     return (
         <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-            <div className="mb-8 text-center">
-                <h2 className="text-2xl font-bold text-white">Shop by Category</h2>
-                <p className="mt-1 text-sm text-slate-400">Browse our collections</p>
+            <div className="mb-10 text-center">
+                <h2 className="text-2xl font-bold">
+                    <span className="text-white">Shop by </span>
+                    <span className="gradient-text">Category</span>
+                </h2>
+                <p className="mt-2 text-sm text-slate-400">Browse our collections</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
@@ -98,10 +101,10 @@ export function CategoriesSection() {
                         href={`/products?category=${category.slug}`}
                         className="group"
                     >
-                        <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6 text-center transition-all duration-300 hover:border-indigo-500/50 hover:bg-slate-800/50 hover:shadow-lg hover:shadow-indigo-500/5">
-                            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/10 transition-colors group-hover:bg-indigo-500/20">
+                        <div className="rounded-2xl glass-card p-6 text-center transition-all duration-300 hover:border-indigo-400/30 hover:shadow-[0_4px_24px_rgba(99,102,241,0.12)] hover:scale-[1.04]">
+                            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-500/10 transition-all duration-300 group-hover:bg-indigo-500/20 group-hover:shadow-[0_0_16px_rgba(99,102,241,0.2)]">
                                 <svg
-                                    className="h-6 w-6 text-indigo-400"
+                                    className="h-6 w-6 text-indigo-400 transition-transform duration-300 group-hover:scale-110"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"

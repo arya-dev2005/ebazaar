@@ -58,7 +58,7 @@ function StarRating({ rating, reviewCount }: { rating: number; reviewCount?: num
 function StockBadge({ stock }: { stock: number }) {
     if (stock === 0) {
         return (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">
                 <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -69,7 +69,7 @@ function StockBadge({ stock }: { stock: number }) {
 
     if (stock <= 5) {
         return (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -79,7 +79,7 @@ function StockBadge({ stock }: { stock: number }) {
     }
 
     return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
@@ -92,7 +92,7 @@ function ProductImage({ src, alt }: { src: string; alt: string }) {
     const [isLoading, setIsLoading] = useState(true);
 
     return (
-        <div className="aspect-square overflow-hidden bg-slate-800 relative">
+        <div className="aspect-square overflow-hidden bg-slate-800/50 relative rounded-t-2xl">
             {isLoading && (
                 <div className="absolute inset-0 bg-slate-800 animate-pulse" />
             )}
@@ -101,9 +101,11 @@ function ProductImage({ src, alt }: { src: string; alt: string }) {
                 alt={alt}
                 loading="lazy"
                 onLoad={() => setIsLoading(false)}
-                className={`h-full w-full object-cover transition-all duration-500 ${isLoading ? "opacity-0 scale-105" : "opacity-100 scale-100"
+                className={`h-full w-full object-cover transition-all duration-500 group-hover:scale-110 ${isLoading ? "opacity-0 scale-105" : "opacity-100 scale-100"
                     }`}
             />
+            {/* Bottom gradient overlay for depth */}
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none" />
         </div>
     );
 }
@@ -112,7 +114,9 @@ function QuickAddButton({ productId, disabled }: { productId: string; disabled?:
     const [isPending, startTransition] = useTransition();
     const [showSuccess, setShowSuccess] = useState(false);
 
-    const handleAddToCart = async () => {
+    const handleAddToCart = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
         startTransition(async () => {
             const formData = new FormData();
             formData.append("productId", productId);
@@ -130,7 +134,7 @@ function QuickAddButton({ productId, disabled }: { productId: string; disabled?:
         return (
             <button
                 disabled
-                className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-500 text-white font-medium text-sm transition-all duration-300"
+                className="flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 text-white font-medium text-sm transition-all duration-300"
             >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -144,7 +148,7 @@ function QuickAddButton({ productId, disabled }: { productId: string; disabled?:
         <button
             onClick={handleAddToCart}
             disabled={disabled || isPending}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-medium text-sm shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:shadow-xl hover:shadow-indigo-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-medium text-sm shadow-lg shadow-indigo-500/20 transition-all duration-300 hover:shadow-[0_0_24px_rgba(99,102,241,0.4)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg"
         >
             {isPending ? (
                 <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -169,15 +173,15 @@ export function ProductCard({ product }: ProductCardProps) {
 
     return (
         <Link href={`/products/${product.slug}`} className="group block">
-            <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/50 transition-all duration-300 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1">
+            <div className="overflow-hidden rounded-2xl glass-card transition-all duration-300 hover:border-indigo-400/30 hover:shadow-[0_8px_32px_rgba(99,102,241,0.15)] hover:scale-[1.03] hover:-translate-y-2">
                 {/* Image with loading state */}
                 <ProductImage src={imageUrl} alt={product.name} />
 
                 {/* Info */}
-                <div className="p-4 space-y-3">
+                <div className="p-5 space-y-3">
                     {/* Category and Stock */}
                     <div className="flex items-center justify-between gap-2">
-                        <p className="text-xs font-medium text-indigo-400">
+                        <p className="text-xs font-medium text-indigo-400 tracking-wide uppercase">
                             {product.category.name}
                         </p>
                         {product.stock !== undefined && <StockBadge stock={product.stock} />}
@@ -189,7 +193,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     )}
 
                     {/* Title */}
-                    <h3 className="text-sm font-semibold text-slate-100 line-clamp-2 group-hover:text-white transition-colors">
+                    <h3 className="text-sm font-semibold text-slate-100 line-clamp-2 group-hover:text-white transition-colors leading-snug">
                         {product.name}
                     </h3>
 
@@ -203,7 +207,7 @@ export function ProductCard({ product }: ProductCardProps) {
                                 <span className="text-sm text-slate-500 line-through">
                                     {formatPrice(product.price)}
                                 </span>
-                                <span className="px-2 py-0.5 rounded-md text-xs font-medium bg-red-500/10 text-red-400">
+                                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-red-500/15 text-red-400 border border-red-500/20">
                                     {Math.round((1 - product.salePrice! / product.price) * 100)}% OFF
                                 </span>
                             </>

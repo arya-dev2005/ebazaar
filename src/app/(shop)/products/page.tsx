@@ -39,7 +39,7 @@ export default async function ProductsPage({
                 <div className="flex flex-col gap-6 lg:flex-row">
                     {/* Sidebar */}
                     <aside className="w-full lg:w-64 shrink-0">
-                        <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+                        <div className="rounded-2xl glass-card p-5 sticky top-20">
                             <h2 className="text-sm font-semibold text-white mb-4">Filters</h2>
 
                             {/* Search */}
@@ -48,7 +48,7 @@ export default async function ProductsPage({
                                     name="search"
                                     defaultValue={filters.search}
                                     placeholder="Search products..."
-                                    className="w-full rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none"
+                                    className="w-full rounded-xl border border-slate-700/50 bg-slate-800/40 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none transition-all duration-200 focus:shadow-[0_0_12px_rgba(99,102,241,0.15)]"
                                 />
                             </form>
 
@@ -114,7 +114,7 @@ export default async function ProductsPage({
                                 ))}
                             </div>
                         ) : (
-                            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-16 text-center">
+                            <div className="rounded-2xl glass-card p-16 text-center">
                                 <p className="text-slate-400">No products found</p>
                             </div>
                         )}
@@ -126,9 +126,9 @@ export default async function ProductsPage({
                                     <a
                                         key={page}
                                         href={`/products?page=${page}${filters.categoryId ? `&categoryId=${filters.categoryId}` : ""}${filters.sort ? `&sort=${filters.sort}` : ""}`}
-                                        className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${page === data.page
-                                                ? "bg-indigo-500 text-white"
-                                                : "text-slate-400 hover:text-white hover:bg-slate-800"
+                                        className={`rounded-xl px-3.5 py-2 text-sm font-medium transition-all duration-300 ${page === data.page
+                                                ? "bg-indigo-500 text-white shadow-lg shadow-indigo-500/25"
+                                                : "text-slate-400 hover:text-white hover:bg-slate-800/60 glass-border"
                                             }`}
                                     >
                                         {page}

@@ -2,8 +2,10 @@ import Link from "next/link";
 
 export function Footer() {
     return (
-        <footer className="border-t border-slate-800 bg-slate-950">
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <footer className="relative border-t border-slate-800/50 bg-slate-950">
+            {/* Gradient top edge */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
+            <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Brand */}
                     <div>
@@ -20,28 +22,28 @@ export function Footer() {
 
                     {/* Shop */}
                     <div>
-                        <h3 className="text-sm font-semibold text-white mb-3">Shop</h3>
-                        <ul className="space-y-2 text-sm text-slate-400">
-                            <li><Link href="/products" className="hover:text-white transition-colors">All Products</Link></li>
-                            <li><Link href="/products?featured=true" className="hover:text-white transition-colors">Featured</Link></li>
-                            <li><Link href="/products?sort=newest" className="hover:text-white transition-colors">New Arrivals</Link></li>
+                        <h3 className="text-sm font-semibold text-white mb-4">Shop</h3>
+                        <ul className="space-y-2.5 text-sm text-slate-400">
+                            <li><Link href="/products" className="hover:text-white transition-colors duration-200">All Products</Link></li>
+                            <li><Link href="/products?featured=true" className="hover:text-white transition-colors duration-200">Featured</Link></li>
+                            <li><Link href="/products?sort=newest" className="hover:text-white transition-colors duration-200">New Arrivals</Link></li>
                         </ul>
                     </div>
 
                     {/* Account */}
                     <div>
-                        <h3 className="text-sm font-semibold text-white mb-3">Account</h3>
-                        <ul className="space-y-2 text-sm text-slate-400">
-                            <li><Link href="/sign-in" className="hover:text-white transition-colors">Sign In</Link></li>
-                            <li><Link href="/sign-up" className="hover:text-white transition-colors">Create Account</Link></li>
-                            <li><Link href="/orders" className="hover:text-white transition-colors">Order History</Link></li>
+                        <h3 className="text-sm font-semibold text-white mb-4">Account</h3>
+                        <ul className="space-y-2.5 text-sm text-slate-400">
+                            <li><Link href="/sign-in" className="hover:text-white transition-colors duration-200">Sign In</Link></li>
+                            <li><Link href="/sign-up" className="hover:text-white transition-colors duration-200">Create Account</Link></li>
+                            <li><Link href="/orders" className="hover:text-white transition-colors duration-200">Order History</Link></li>
                         </ul>
                     </div>
 
                     {/* Support */}
                     <div>
-                        <h3 className="text-sm font-semibold text-white mb-3">Support</h3>
-                        <ul className="space-y-2 text-sm text-slate-400">
+                        <h3 className="text-sm font-semibold text-white mb-4">Support</h3>
+                        <ul className="space-y-2.5 text-sm text-slate-400">
                             <li><span className="cursor-default">help@ebazaar.com</span></li>
                             <li><span className="cursor-default">1-800-555-0199</span></li>
                         </ul>

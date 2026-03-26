@@ -287,9 +287,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have questions or need help:
 
-- 📧 **Email**: arya.dev2005@gmail.com
-- 💬 **GitHub Issues**: Report bugs and request features
-- 🐦 **Twitter**: @arya_dev2005
+- 📧 **Email**: aryadas.dev@gmail.com
+- 🐛 **GitHub Issues**: Report bugs and request features
+- 💼 **LinkedIn**: www.linkedin.com/in/aryaxplorer
+- 🐦 **Twitter (X)**: @AryaXplorer
 
 ---
 

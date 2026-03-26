@@ -389,22 +389,9 @@ All contributors will be recognized in:
 
 We appreciate your time and effort. Contributors who make significant contributions may be invited to become maintainers.
 
----
-
-## 📞 Need Help?
-
-If you have questions or need clarification:
-
-- 📧 **Email**: arya.dev2005@gmail.com
-- 💬 **GitHub Discussions**: For questions and community support
-- 🐛 **GitHub Issues**: For bug reports and feature requests
+- Open an issue for general questions
+- Email: aryadas.dev@gmail.com
 
 ---
 
-<div align="center">
-
-**Thank you for being part of our community!** 🙌
-
-*Last updated: March 2025*
-
-</div>
+Thank you for contributing to Ebazaar! 🎉
